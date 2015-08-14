@@ -1,12 +1,11 @@
 // ===== REM UNIT MIXINS ====
 @base-font-size-px: 10; // root's font size. @base-font-size-px MUST BE AN INTEGER.
-
-
+@support-old-ie: true; // Set to false if you don't want to fallback to pixel values for IE8 and under
 @pxtorem-js-function: ~`pxtorem = function(px){ if (typeof rmxsBaseFontSize == 'undefined')  rmxsBaseFontSize = @{base-font-size-px}; return (parseInt(px.replace(/(^\d+)(.+$)/i,'$1')) / rmxsBaseFontSize + 'rem') }`;
 
 
 // ===== FONT MIXINS =====
-.font-size(@value) {
+.font-size(@value) when (@support-old-ie = true) {
     font-size: @value;
 }
 
@@ -15,7 +14,7 @@
     font-size: @rem-value;
 }
 
-.line-height(@value) {
+.line-height(@value) when (@support-old-ie = true) {
     line-height: @value;
 }
 
@@ -24,7 +23,7 @@
     line-height: @rem-value;
 }
 
-.text-indent(@value) {
+.text-indent(@value) when (@support-old-ie = true) {
     text-indent: @value;
 }
 
@@ -35,11 +34,11 @@
 
 
 // ===== MARGIN MIXINS =====
-.margin(@value) {
+.margin(@value) when (@support-old-ie = true) {
     margin: @value;
 }
 
-.margin(@vvalue, @hvalue) {
+.margin(@vvalue, @hvalue) when (@support-old-ie = true) {
     margin: @arguments;
 }
 
@@ -64,7 +63,7 @@
     .margin(@vertical, @rem-value);
 }
 
-.margin-top(@value) {
+.margin-top(@value) when (@support-old-ie = true) {
     margin-top: @value;
 }
 
@@ -73,7 +72,7 @@
     margin-top: @rem-value;
 }
 
-.margin-right(@value) {
+.margin-right(@value) when (@support-old-ie = true) {
     margin-right: @value;
 }
 
@@ -82,7 +81,7 @@
     margin-right: @rem-value;
 }
 
-.margin-bottom(@value) {
+.margin-bottom(@value) when (@support-old-ie = true) {
     margin-bottom: @value;
 }
 
@@ -91,7 +90,7 @@
     margin-bottom: @rem-value;
 }
 
-.margin-left(@value) {
+.margin-left(@value) when (@support-old-ie = true) {
     margin-left: @value;
 }
 
@@ -102,11 +101,11 @@
 
 
 // ===== PADDING MIXINS =====
-.padding(@value) {
+.padding(@value) when (@support-old-ie = true) {
     padding: @value;
 }
 
-.padding(@vvalue, @hvalue) {
+.padding(@vvalue, @hvalue) when (@support-old-ie = true) {
     padding: @arguments;
 }
 
@@ -131,7 +130,7 @@
     .padding(@vertical, @rem-value);
 }
 
-.padding-top(@value) {
+.padding-top(@value) when (@support-old-ie = true) {
     padding-top: @value;
 }
 
@@ -140,7 +139,7 @@
     padding-top: @rem-value;
 }
 
-.padding-right(@value) {
+.padding-right(@value) when (@support-old-ie = true) {
     padding-right: @value;
 }
 
@@ -149,7 +148,7 @@
     padding-right: @rem-value;
 }
 
-.padding-bottom(@value) {
+.padding-bottom(@value) when (@support-old-ie = true) {
     padding-bottom: @value;
 }
 
@@ -158,7 +157,7 @@
     padding-bottom: @rem-value;
 }
 
-.padding-left(@value) {
+.padding-left(@value) when (@support-old-ie = true) {
     padding-left: @value;
 }
 
@@ -169,7 +168,7 @@
 
 
 // ===== POSITION MIXINS =====
-.height(@value) {
+.height(@value) when (@support-old-ie = true) {
     height: @value;
 }
 
@@ -178,7 +177,7 @@
     height: @rem-value;
 }
 
-.min-height(@value) {
+.min-height(@value) when (@support-old-ie = true) {
     min-height: @value;
 }
 
@@ -187,7 +186,7 @@
     min-height: @rem-value;
 }
 
-.max-height(@value) {
+.max-height(@value) when (@support-old-ie = true) {
     max-height: @value;
 }
 
@@ -197,7 +196,7 @@
 }
 
 
-.width(@value) {
+.width(@value) when (@support-old-ie = true) {
     width: @value;
 }
 
@@ -206,7 +205,7 @@
     width: @rem-value;
 }
 
-.min-width(@value) {
+.min-width(@value) when (@support-old-ie = true) {
     min-width: @value;
 }
 
@@ -215,7 +214,7 @@
     min-width: @rem-value;
 }
 
-.max-width(@value) {
+.max-width(@value) when (@support-old-ie = true) {
     max-width: @value;
 }
 
@@ -224,7 +223,7 @@
     max-width: @rem-value;
 }
 
-.top(@value) {
+.top(@value) when (@support-old-ie = true) {
     top: @value;
 }
 
@@ -233,7 +232,7 @@
     top: @rem-value;
 }
 
-.left(@value) {
+.left(@value) when (@support-old-ie = true) {
     left: @value;
 }
 
@@ -242,7 +241,7 @@
     left: @rem-value;
 }
 
-.right(@value) {
+.right(@value) when (@support-old-ie = true) {
     right: @value;
 }
 
@@ -251,7 +250,7 @@
     right: @rem-value;
 }
 
-.bottom(@value) {
+.bottom(@value) when (@support-old-ie = true) {
     bottom: @value;
 }
 
@@ -261,9 +260,8 @@
 }
 
 
-/*
 .rem-mixins-test-class {
-    .font-size(10px);
+    .font-size(16px);
     .line-height(20px);
     .margin(10px);
     .margin(3em);
@@ -278,4 +276,4 @@
     .padding(10px, 20%);
     .padding(3em, 20px)
 }
-*/
+
